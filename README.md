@@ -69,6 +69,14 @@ The matrix doubles as a nested component ablation: each lift isolates one compon
 
 Three BugsInPy defects are measured end-to-end in the frozen matrix: [Black bug 21](experiments/results/glm-5.3-flash-free-20261018-v3/bugsinpy-black-021), [FastAPI bug 12](experiments/results/glm-5.3-flash-free-20261018-v3/bugsinpy-fastapi-012), and [PySnooper bug 1](experiments/results/glm-5.3-flash-free-20261018-v3/bugsinpy-pysnooper-001) — the hardest configuration, where the pre-existing suite cannot discriminate the bug and the existing-tests arm scores 0 by construction. Earlier protocol runs (prompt v1, provider diagnostics, a partial quota-interrupted matrix) are retained under `experiments/results/` for provenance; pre-freeze runs are excluded from the current schema gate.
 
+### Benchmark repositories
+
+The benchmark repositories are not included. Download them into `.benchmark_repos/`:
+
+- Black — [https://github.com/psf/black](https://github.com/psf/black)
+- FastAPI — [https://github.com/tiangolo/fastapi](https://github.com/tiangolo/fastapi)
+- PySnooper — [https://github.com/cool-RR/PySnooper](https://github.com/cool-RR/PySnooper)
+
 ### Result artifacts
 
 - [Frozen comparison summary](experiments/results/glm-5.3-flash-free-20261018-v3/comparison-summary.json)
