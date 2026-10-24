@@ -1,0 +1,3 @@
+task_id,project,buggy_commit,fixed_commit,setup_command,test_command,buggy_status,fixed_status,reproducible,exclusion_reason
+bugsinpy-pilot-001,example-project,buggy-commit-1,fixed-commit-1,"python -m pip install -r requirements.txt","pytest -q","pending","pending","false","placeholder pilot entry"
+bugsinpy-pilot-002,example-project,buggy-commit-2,fixed-commit-2,"python -m pip install -r requirements.txt","pytest -q","pending","pending","false","placeholder pilot entry"

@@ -1,0 +1,78 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "file:///E:/evidence-loop/schemas/comparison_summary.schema.json",
+  "title": "ComparisonSummary",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "experiment_type",
+    "protocol_id",
+    "manifest",
+    "conditions",
+    "task_ids",
+    "repetitions",
+    "records"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "experiment_type": {
+      "const": "frozen_comparison_matrix"
+    },
+    "protocol_id": {
+      "type": "string"
+    },
+    "manifest": {
+      "type": "string"
+    },
+    "conditions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "task_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "repetitions": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "estimated_max_cost_usd": {
+      "type": [
+        "number",
+        "null"
+      ]
+    },
+    "approved_max_cost_usd": {
+      "type": [
+        "number",
+        "null"
+      ]
+    },
+    "budget_check_type": {
+      "type": "string"
+    },
+    "quota_exhausted": {
+      "type": "boolean"
+    },
+    "quota_diagnostic": {
+      "type": [
+        "object",
+        "null"
+      ]
+    },
+    "records": {
+      "type": "array",
+      "items": {
+        "$ref": "condition_record.schema.json"
+      }
+    }
+  },
+  "additionalProperties": true
+}

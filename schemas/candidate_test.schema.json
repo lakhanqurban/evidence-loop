@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "file:///E:/evidence-loop/schemas/candidate_test.schema.json",
+  "title": "CandidateTest",
+  "type": "object",
+  "required": [
+    "candidate_id",
+    "test_code",
+    "syntax_valid"
+  ],
+  "properties": {
+    "candidate_id": {
+      "type": "string"
+    },
+    "test_code": {
+      "type": "string"
+    },
+    "syntax_valid": {
+      "type": "boolean"
+    },
+    "evidence_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "coverage": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "features": {
+      "type": "object"
+    },
+    "ranking_score": {
+      "type": "number"
+    },
+    "ranking_positions": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "integer",
+        "minimum": 1
+      }
+    },
+    "parent_candidate_id": {
+      "type": "string"
+    },
+    "refinement_round": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "notes": {
+      "type": "string"
+    },
+    "buggy": {
+      "type": "object"
+    },
+    "fixed": {
+      "type": "object"
+    },
+    "oracle": {
+      "type": "object"
+    },
+    "setup": {
+      "type": "object"
+    }
+  },
+  "additionalProperties": true
+}

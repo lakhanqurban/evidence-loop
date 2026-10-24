@@ -1,0 +1,83 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "file:///E:/evidence-loop/schemas/condition_record.schema.json",
+  "title": "ConditionRecord",
+  "type": "object",
+  "required": [
+    "condition",
+    "task_id",
+    "run_id",
+    "candidate_count",
+    "any_oracle_match",
+    "candidate_detection_count",
+    "status"
+  ],
+  "properties": {
+    "condition": {
+      "type": "string"
+    },
+    "task_id": {
+      "type": "string"
+    },
+    "run_id": {
+      "type": "string"
+    },
+    "candidate_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "any_oracle_match": {
+      "type": "boolean"
+    },
+    "candidate_detection_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "status": {
+      "type": "string"
+    },
+    "error": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "artifact": {
+      "type": "string"
+    },
+    "token_usage": {
+      "type": [
+        "object",
+        "null"
+      ]
+    },
+    "ranking": {
+      "type": [
+        "object",
+        "null"
+      ]
+    },
+    "provider_attempts": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "response_diagnostics": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "oracle": {
+      "type": "object"
+    },
+    "buggy": {
+      "type": "object"
+    },
+    "fixed": {
+      "type": "object"
+    }
+  },
+  "additionalProperties": true
+}

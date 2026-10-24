@@ -1,0 +1,281 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "file:///E:/evidence-loop/schemas/experiment_result.schema.json",
+  "title": "ExperimentResult",
+  "oneOf": [
+    {
+      "$ref": "#/$defs/BenchmarkReproduction"
+    },
+    {
+      "$ref": "#/$defs/GeneratedCandidateExperiment"
+    },
+    {
+      "$ref": "#/$defs/GeneratedFailureReport"
+    },
+    {
+      "$ref": "#/$defs/SkippedGenerationReport"
+    }
+  ],
+  "$defs": {
+    "Runtime": {
+      "type": "object",
+      "required": [
+        "python",
+        "platform"
+      ],
+      "properties": {
+        "python": {
+          "type": "string"
+        },
+        "platform": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": true
+    },
+    "GeneratedFailureReport": {
+      "type": "object",
+      "required": [
+        "schema_version",
+        "experiment_type",
+        "status",
+        "task_id",
+        "condition",
+        "run_id",
+        "error",
+        "provider_attempts"
+      ],
+      "properties": {
+        "schema_version": {
+          "const": "1.0"
+        },
+        "experiment_type": {
+          "const": "generation_failure"
+        },
+        "status": {
+          "const": "generation_failed"
+        },
+        "task_id": {
+          "type": "string"
+        },
+        "condition": {
+          "type": "string"
+        },
+        "run_id": {
+          "type": "string"
+        },
+        "error_type": {
+          "type": "string"
+        },
+        "error": {
+          "type": "string"
+        },
+        "model": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "provider": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "token_usage": {
+          "type": [
+            "object",
+            "null"
+          ]
+        },
+        "provider_attempts": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "response_diagnostics": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "created_at": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "additionalProperties": true
+    },
+    "SkippedGenerationReport": {
+      "type": "object",
+      "required": [
+        "schema_version",
+        "experiment_type",
+        "status",
+        "task_id",
+        "condition",
+        "run_id",
+        "reason",
+        "quota_diagnostic"
+      ],
+      "properties": {
+        "schema_version": {
+          "const": "1.0"
+        },
+        "experiment_type": {
+          "const": "generation_skipped"
+        },
+        "status": {
+          "const": "skipped_quota_exhausted"
+        },
+        "task_id": {
+          "type": "string"
+        },
+        "condition": {
+          "type": "string"
+        },
+        "run_id": {
+          "type": "string"
+        },
+        "reason": {
+          "type": "string"
+        },
+        "quota_diagnostic": {
+          "type": [
+            "object",
+            "null"
+          ]
+        },
+        "created_at": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "additionalProperties": true
+    },
+    "BenchmarkReproduction": {
+      "type": "object",
+      "required": [
+        "schema_version",
+        "experiment_type",
+        "created_at",
+        "runtime",
+        "manifest",
+        "timeout_seconds",
+        "task_ids",
+        "tasks"
+      ],
+      "properties": {
+        "schema_version": {
+          "const": "1.0"
+        },
+        "experiment_type": {
+          "const": "benchmark_reproduction"
+        },
+        "created_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "runtime": {
+          "$ref": "#/$defs/Runtime"
+        },
+        "manifest": {
+          "type": "string"
+        },
+        "timeout_seconds": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "task_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "tasks": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        }
+      },
+      "additionalProperties": true
+    },
+    "GeneratedCandidateExperiment": {
+      "type": "object",
+      "required": [
+        "schema_version",
+        "experiment_type",
+        "task_id",
+        "project",
+        "model",
+        "prompt_version",
+        "runtime",
+        "generation_revision",
+        "scoring_revision",
+        "evidence",
+        "candidate_tests"
+      ],
+      "properties": {
+        "schema_version": {
+          "const": "1.0"
+        },
+        "experiment_type": {
+          "const": "llm_generated_regression_tests"
+        },
+        "task_id": {
+          "type": "string"
+        },
+        "project": {
+          "type": "string"
+        },
+        "model": {
+          "type": "string"
+        },
+        "prompt_version": {
+          "type": "string"
+        },
+        "runtime": {
+          "$ref": "#/$defs/Runtime"
+        },
+        "experiment_config": {
+          "type": "object"
+        },
+        "generation_duration_seconds": {
+          "type": "number",
+          "minimum": 0
+        },
+        "token_usage": {
+          "type": [
+            "object",
+            "null"
+          ]
+        },
+        "api_cost_usd": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "generation_revision": {
+          "type": "string"
+        },
+        "scoring_revision": {
+          "type": "string"
+        },
+        "evidence": {
+          "type": "object"
+        },
+        "candidate_tests": {
+          "type": "array",
+          "items": {
+            "$ref": "candidate_test.schema.json"
+          }
+        }
+      },
+      "additionalProperties": true
+    }
+  }
+}
